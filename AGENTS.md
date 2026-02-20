@@ -1,0 +1,6 @@
+# This project will attempt to solve a 2D coupled poisson equation in (rho,z) cylindrical coordinates
+# in mainpynb.ipynb (main testing jupyter notebook). The grid is cell centered. There are two coupled equations
+# for two variables, psi and the product of the lapse and psi, psilapse. The BCs are almost the same. At large rho/z, psi and
+# alpha*psi tend to C/r + 1, where r = sqrt(rho^2 + z^2). At r = 0, we have d_dr () -> 0. At z=0 we have a disk manifesting 
+# as a jump in the first derivative. For psi, d_dz(psi)(z=0) = -pi psi(z=0)^5 * sigma. Clearly nonlinear. Sigma depends on the
+# lapse, but we have a newtonian guess for the initial lapse. I tried to iterate both psi -> lapse -> iterate, but this might not be optimal. I am now trying to converge in psi before doing anything with the lapse. Solely focus on the Converge_Psi function both, the robinHelper, and the laplacian construction, along with the residuals. I recently made changes moving towards a cell centered grid. RobinHelper is currently wrong, along with the laplacian, being leftover from my vertex centered attempt. 
